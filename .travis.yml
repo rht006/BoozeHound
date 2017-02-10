@@ -8,5 +8,5 @@ android:
     - android-24
 
 script:
-   - cd $HOME/BoozeHound 
+   - cd BoozeHound 
    - gradle build connectedCheck
