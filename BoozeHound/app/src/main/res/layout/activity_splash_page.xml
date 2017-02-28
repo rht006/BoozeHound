@@ -22,14 +22,28 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_splash_page"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <Button
+        android:text="Side Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:id="@+id/Side Menu Button"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+    <Button
+        android:text="GPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/GPS button"
+        android:layout_weight="1"
+        app:layout_anchorGravity="bottom|left"
+        android:layout_gravity="top|right"
+        android:visibility="visible"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_height="261dp"
+        android:layout_width="wrap_content" />
+
 
 </android.support.design.widget.CoordinatorLayout>
