@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/activity_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.boozehound.boozehound12.MainMenu">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="226dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imageView"
+            android:layout_above="@+id/listView"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp" />
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            app:toolbarId="@+id/toolbar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="66dp"
+                android:layout_width="match_parent"></android.support.v7.widget.Toolbar>
+
+            <Button
+                android:text="Side Menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button6"
+                android:layout_marginLeft="0dp" />
+
+            <Button
+                android:text="GPS"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button7"
+                android:layout_marginLeft="250dp" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/imageView2"
+                android:layout_marginLeft="100dp" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
