@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faeed7"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.boozehound.boozehound12.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="320dp"
+        android:layout_height="181dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="36dp"
+        android:adjustViewBounds="false"
+        android:background="@mipmap/ic_launcher"
+        android:baselineAlignBottom="true"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:cropToPadding="true"
+        android:maxWidth="100dp"
+        android:padding="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableRow1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:paddingTop="220dp">>
+
+        <Button
+            android:id="@+id/button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:layout_weight="0.00"
+            android:backgroundTint="#3b5998"
+            android:clickable="true"
+            android:text="SIGN IN WITH FACEBOOK"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            style="?android:textAppearanceSmall"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:backgroundTint="#3b5998"
+            android:clickable="true"
+            android:text="SIGN IN WITH      GOOGLE"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/guest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:paddingLeft="105dp"
+            android:text="continue as a guest"
+            android:textAllCaps="true" />
+    </LinearLayout>
+
+
+</LinearLayout>
