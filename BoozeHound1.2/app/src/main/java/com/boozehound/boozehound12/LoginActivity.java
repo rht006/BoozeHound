@@ -3,6 +3,7 @@ package com.boozehound.boozehound12;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -66,6 +67,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        //Facebook Login Button
+
+
+        //Google Login Button
+        final Button button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent mainMenuIntent = new Intent(LoginActivity.this, MainMenu.class);
+                LoginActivity.this.startActivity(mainMenuIntent); // testing to see if we can load main from login like this.
+            }
+        });
         // Set up the login form.
  /*       mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -93,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
        // mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);*/
     }
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
@@ -127,6 +142,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Callback received when a permissions request has been completed.
      */
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -203,6 +219,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Shows the progress UI and hides the login form.
      */
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
