@@ -10,6 +10,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -19,10 +29,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.telecom.Call;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -63,51 +77,73 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    //Facebook Callback manager
+    private CallbackManager callbackManager;
+    private LoginButton facebookLoginButton;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    //Provide a check to see if the user is already logged in
+    public boolean isLoggedInFacebook() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+        /* Initialize the Facebook SDK before executing any other operations
+          sdkInitialize() is deprecated, but we will still include for older
+          versions of Android just in case.
+         */
+        FacebookSdk.setApplicationId("180924102397642");
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        setContentView(R.layout.activity_login);
+        AppEventsLogger.activateApp(this);
+        callbackManager = CallbackManager.Factory.create();
 
         //Facebook Login Button
+        setContentView(R.layout.activity_login);
+        facebookLoginButton = (LoginButton)findViewById(R.id.button);
 
+        //Check Facebook Login Status
+        if ( isLoggedInFacebook() ) {
+            loadMainMenu();
+        }
+
+        //Facebook Login Button Actions
+        facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                //Logging User ID for now, will be SQL statement later on.
+                Log.i("BoozeHound", loginResult.getAccessToken().getUserId());
+                loadMainMenu();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+
+            }
+
+        });
 
         //Google Login Button
-        final Button button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
+        final Button googleLoginButton = (Button) findViewById(R.id.button2);
+        googleLoginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent mainMenuIntent = new Intent(LoginActivity.this, MainMenu.class);
-                LoginActivity.this.startActivity(mainMenuIntent); // testing to see if we can load main from login like this.
+                loadMainMenu();
             }
         });
-        // Set up the login form.
- /*       mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-       // mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);*/
     }
-
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
@@ -358,5 +394,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void loadMainMenu(){
+        Intent mainMenuIntent = new Intent(LoginActivity.this, MainMenu.class);
+        LoginActivity.this.startActivity(mainMenuIntent);
     }
 }
