@@ -131,12 +131,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             @Override
             public void onCancel() {
-
+                //Do Nothing
             }
 
             @Override
             public void onError(FacebookException e) {
-
+                //Need "Error" Pop Up
             }
 
         });
@@ -148,6 +148,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 loadMainMenu();
             }
         });
+
+        //Continue As Guest Button
+        final Button guestButton = (Button) findViewById(R.id.guestButton);
+        googleLoginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                loadMainMenu();
+            }
+        });
+
     }
 
     private void populateAutoComplete() {

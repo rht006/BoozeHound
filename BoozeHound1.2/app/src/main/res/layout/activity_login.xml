@@ -56,6 +56,18 @@
         android:textColor="#ffffff"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/guestButton"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="right"
+        android:backgroundTint="#3b5998"
+        android:clickable="true"
+        android:text="Continue As Guest"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="283dp"
