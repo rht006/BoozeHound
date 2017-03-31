@@ -54,6 +54,9 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    //Create Database instance in order to be able to query for users
+    DatabaseManager database_manager = new DatabaseManager();
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -120,7 +123,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onSuccess(LoginResult loginResult) {
                 //Logging User ID for now, will be SQL statement later on.
-                Log.i("BoozeHound", loginResult.getAccessToken().getUserId());
+                String userID = loginResult.getAccessToken().getUserId();
+                Log.i("BoozeHound", userID);
+                database_manager.queryDatabaseForUser(userID);
                 loadMainMenu();
             }
 
