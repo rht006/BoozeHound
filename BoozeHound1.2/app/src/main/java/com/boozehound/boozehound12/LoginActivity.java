@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -19,6 +20,17 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -52,7 +64,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, LoaderCallbacks<Cursor> {
 
     //Create Database instance in order to be able to query for users
     DatabaseManager database_manager = new DatabaseManager();
@@ -141,17 +153,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         });
 
+        //Configure Google Sign-in to request profile and email
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        //Create Google API Client with access to Google Sign-in Services
+        final GoogleApiClient SignInClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
         //Google Login Button
         final Button googleLoginButton = (Button) findViewById(R.id.button2);
         googleLoginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(SignInClient);
+                startActivityForResult(signInIntent, 9001);
                 loadMainMenu();
             }
         });
 
         //Continue As Guest Button
         final Button guestButton = (Button) findViewById(R.id.guestButton);
-        googleLoginButton.setOnClickListener(new View.OnClickListener() {
+        guestButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 loadMainMenu();
             }
@@ -413,5 +439,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void loadMainMenu(){
         Intent mainMenuIntent = new Intent(LoginActivity.this, MainMenu.class);
         LoginActivity.this.startActivity(mainMenuIntent);
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        // Unresolvable error has occured
+        Log.d("LoginActivity", "onConnectionFailed:" + connectionResult);
+    }
+
+    public void onActivityRes(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from
+        //   GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == 9001) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                GoogleSignInAccount acct = result.getSignInAccount();
+                // Get account information
+                String mFullName = acct.getDisplayName();
+                String mEmail = acct.getEmail();
+            }
+        }
     }
 }
