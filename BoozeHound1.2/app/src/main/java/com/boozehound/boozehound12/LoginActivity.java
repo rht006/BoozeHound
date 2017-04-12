@@ -26,11 +26,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.*;
 
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -96,9 +98,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private CallbackManager callbackManager;
     private LoginButton facebookLoginButton;
 
+    String userEmail = "testing";
+    String userFullName;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 9001) {
+            Log.d("LoginActivity", "test2");
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     //Provide a check to see if the user is already logged in
@@ -155,6 +166,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         //Configure Google Sign-in to request profile and email
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.server_client_id))
                 .requestEmail()
                 .build();
 
@@ -164,14 +176,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-
         //Google Login Button
-        final Button googleLoginButton = (Button) findViewById(R.id.button2);
+        //final Button googleLoginButton = (Button) findViewById(R.id.button2);
+        SignInButton googleLoginButton = (SignInButton) findViewById(R.id.button2);
         googleLoginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(SignInClient);
                 startActivityForResult(signInIntent, 9001);
-                loadMainMenu();
+                Log.d("LoginActivity",userEmail);
+                //loadMainMenu();
             }
         });
 
@@ -447,19 +460,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         Log.d("LoginActivity", "onConnectionFailed:" + connectionResult);
     }
 
-    public void onActivityRes(int requestCode, int resultCode, Intent data) {
+    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from
-        //   GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...)
         if (requestCode == 9001) {
+            Log.d("LoginActivity", "test2");
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
             if (result.isSuccess()) {
                 GoogleSignInAccount acct = result.getSignInAccount();
                 // Get account information
-                String mFullName = acct.getDisplayName();
-                String mEmail = acct.getEmail();
+                userFullName = acct.getDisplayName();
+                userEmail = acct.getEmail();
             }
+        }
+    }*/
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        Log.d("LoginActivity", "handleSignInResult:" + result.isSuccess());
+        if (result.isSuccess()) {
+            // signed in successfully
+            GoogleSignInAccount acct = result.getSignInAccount();
+            userEmail = acct.getEmail();
+            userFullName = acct.getDisplayName();
+            Log.d("LoginActivity",userEmail);
+            loadMainMenu();
         }
     }
 }
