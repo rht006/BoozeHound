@@ -32,17 +32,17 @@
         tools:layout_constraintTop_creator="1" />
 
 
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/button2"
         style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="right"
+        android:layout_height="60dp" />
+        <!-- android:layout_gravity="right"
         android:backgroundTint="#3b5998"
         android:clickable="true"
         android:text="SIGN IN WITH      GOOGLE"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold" /> -->
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/button"
