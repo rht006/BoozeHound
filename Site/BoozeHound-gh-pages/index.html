@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>BoozeHound App</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300,600,900,800,700,200,100' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">  
+    <link rel="stylesheet" href="assets/plugins/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/plugins/pe-icon-7-stroke/css/helper.css">   
+    <link rel="stylesheet" href="assets/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/plugins/owl-carousel/owl.theme.css">       
+    <link rel="stylesheet" href="assets/plugins/fullPage.js/jquery.fullPage.css">
+    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head> 
+
+<body class="homepage"> 
+    
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas text-center" role="navigation">
+        <ul class="list-unstyled menu-links">
+            <li class="nav-item active"><a href="index.html">Home</a></li>
+            <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">About<i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">                          
+                    <li><a href="Specification.html">Specification</a></li>
+                    <li><a href="Design.html">Design</a></li>
+                    <li><a href="Implementation.html">Implementation</a></li>                 
+                </ul>                            
+            </li><!--//dropdown--> 
+            <li class="nav-item last"><a href="MeetTeam.html">Meet the Team</a></li>
+            
+                
+        </ul>
+        <ul class="list-unstyled download-buttons">
+            <li class="google-play"><a href="#"><img class="img-responsive" src="assets/images/buttons/btn-google-play.png" alt="Download from Google Play" /></a></li>
+        </ul><!--//list-unstyled-->
+        
+    </nav>      
+    
+    <div class="canvas-wrapper">
+        <!-- ******HEADER****** --> 
+        <header id="header" class="header navbar-fixed-top">  
+            <div class="container">
+                <h1 class="logo">
+                    <a href="index.html">BoozeHound</a>
+                </h1><!--//logo-->
+     
+                <div class="navbar-wrapper">
+                  <span class="navbar-label">MENU</span>
+                  <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div><!--//navbar -->
+            </div><!--//container-->
+        </header><!--//header-->   
+        
+        <div id="fullpage" class="sections-wrapper">
+            
+            <!-- ******Promo Section****** -->
+            <section id="promo" class="promo section gradient-3">
+                <div class="container">
+                    <div class="row">                                      
+                        <div class="intro-area col-md-4 col-sm-12 col-xs-12">
+                            <h1 class="title">Meet BoozeHound</h1>
+                            <p class="intro">The night life app that will give you local happy hour deals based on your location.</p>
+                        </div><!--//intro-area-->
+                        <div class="clearfix visible-sm-block visible-xs-block"></div>
+                        <div class="download-area col-md-4 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-6 col-xs-push-0">
+                            <ul class="list-unstyled download-buttons">
+                                <li class="google-play"><a href="#"><img class="img-responsive" src="assets/images/buttons/btn-google-play.png" alt="Download from Google Play" /></a></li>
+                            </ul><!--//list-unstyled-->
+
+                            <ul class="list-unstyled summary">
+                                <li><i class="fa fa-check"></i> <a href="#benefit-1">Login with Social Media</a></li>
+                                <li><i class="fa fa-check"></i> <a href="#benefit-2">Find Happy Hour Deals Around You</a></li>
+                                <li><i class="fa fa-check"></i> <a href="#benefit-3">Search for Deals</a></li>
+                                <li><i class="fa fa-check"></i> <a href="#benefit-4">Find the Right Place</a></li>
+                            </ul><!--//list-unstyled-->
+                        </div><!--//download-area--> 
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="device device-android text-center col-md-4 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">     
+                            <div class="device-holder android-holder offset-top">                 
+                                <div class="device-holder-inner">
+                                    <div id="home-slideshow" class="owl-carousel owl-theme"> 
+                                      <div class="item"><a href="#benefit-1"><img class="img-responsive" src="assets/images/devices/screenshots/android-screen-1.1.jpg" alt=""></a></div>
+                                      <div class="item"><a href="#benefit-2"><img class="img-responsive" src="assets/images/devices/screenshots/android-screen-1.2.jpg" alt=""></a></div>
+                                      <div class="item"><a href="#benefit-3"><img class="img-responsive" src="assets/images/devices/screenshots/android-screen-1.3.jpg" alt=""></a></div> 
+                                      <div class="item"><a href="#benefit-4"><img class="img-responsive" src="assets/images/devices/screenshots/android-screen-1.3.jpg" alt=""></a></div>                        
+                                    </div><!--//slideshow-->
+                                </div><!--//device-holder-inner-->  
+                            </div><!--//device-holder-->                  
+                        </div><!--//phone-holder--> 
+                        <div class="clearfix"></div>
+                        <div class="arrow-holder text-center">
+                            <p class="lead-text"><a href="#benefit1">Find out more</a></p>
+                            <a href="#benefit1" class="animate pe-7s-bottom-arrow pe-3x"></a>
+                        </div><!--//arrow-holder-->
+                    </div><!--//row-->
+                </div><!--//container-->            
+            </section><!--//promo-->
+            
+            <!-- ******Benefit-1 Section****** -->
+            <section id="benefit-1" class="benefit-1 section gradient-2 has-pattern">
+                <div class="section-inner">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="content col-md-7 col-sm-6 col-xs-12">
+                                <div class="content-inner">
+                                    <span class="pe-icon pe-7s-coffee pe-4x"></span>
+                                    <h2 class="title text-center">Login with Social Media</h2>
+                                    <p class="intro text-center">With the BoozHound app, you can log into the application using either your Facebook or Google +
+                                    <br />
+                                    If you don't have either a Facebook or Google + account, you can use the app too.
+                                    </p>
+                                </div><!--//content-inner-->
+                                <div class="testimonial text-center">                                          
+                                    <div class="content-inner">
+                                        <p class="intro text-center">
+                                        Save your favorite venues for quick access later</p>
+                                    </div><!--//quote-container-->                    
+                                </div><!--//testimonial-->
+                            </div><!--//content-->
+                            <div class="device device-android col-md-4 col-sm-6 col-xs-12">     
+                                <div class="device-holder android-holder offset-top">                 
+                                    <div class="device-holder-inner">
+                                        <img class="img-responsive" src="assets/images/devices/screenshots/android-screen-2.jpg" alt="">
+                                    </div><!--//device-holder-inner-->  
+                                </div><!--//device-holder-->                  
+                            </div><!--//phone-holder-->                         
+                        </div><!--//row-->
+                    </div><!--//container-->
+                </div><!--//section-inner-->
+            </section><!--//benefit-1-->
+            
+            <!-- ******Benefit-2 Section****** -->
+            <section id="benefit-2" class="benefit-2 section gradient-1 has-pattern">
+                <div class="section-inner">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="content col-md-7 col-sm-6 col-xs-12 col-md-push-4 col-sm-push-6 col-xs-push-0">
+                                <div class="content-inner">
+                                    <span class="pe-icon pe-7s-camera pe-4x"></span>
+                                    <h2 class="title text-center">Find Happy Hour Deals Around You</h2>
+                                    <p class="intro text-center">With BoozHound, all local venues and happy hour deals are displayed on the homepage.
+                                    <br />
+                                    The list of venues and happy hour deals are dependent on your general location</p>
+                                </div><!--//content-inner-->
+                                <div class="testimonial text-center">                                          
+                                    <div class="quote-container">
+                                        <i class="fa fa-quote-left"></i>
+                                        <blockquote class="quote">
+                                            "With BoozeHound, I can find great places and prices anywhere in the world!"
+                                        </blockquote>
+                                        <div class="source">
+                                            <img class="profile" src="assets/images/profiles/profile-2.png" alt="" />
+                                            <p class="meta">
+                                                <span class="source-name">Dylan Chavez</span>
+                                                <span class="source-title">Huntsville, TX</span>
+                                            </p>
+                                        </div><!--//source-->
+                                    </div><!--//quote-container-->                    
+                                </div><!--//testimonial-->
+                            </div><!--//content-->
+                            <div class="device device-android col-md-4 col-sm-6 col-xs-12 col-md-pull-7 col-sm-pull-6 col-xs-pull-0">     
+                                <div class="device-holder android-holder offset-top">                 
+                                    <div class="device-holder-inner">
+                                        <img class="img-responsive" src="assets/images/devices/screenshots/android-screen-3.jpg" alt="">
+                                    </div><!--//device-holder-inner-->  
+                                </div><!--//device-holder-->                  
+                            </div><!--//phone-holder-->                         
+                        </div><!--//row-->
+                    </div><!--//container-->
+                </div><!--//section-inner-->
+            </section><!--//benefit-2-->
+            
+            <!-- ******Benefit-3 Section****** -->
+            <section id="benefit-3" class="benefit-3 section gradient-4 has-pattern">
+                <div class="section-inner">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="content col-md-7 col-sm-6 col-xs-12">
+                                <div class="content-inner">
+                                    <span class="pe-icon pe-7s-global pe-4x"></span>
+                                    <h2 class="title text-center">Search for Deals</h2>
+                                    <p class="intro text-center">With Google Maps API, any user can look on the map and find local venues.</p>
+                                    <br />
+                                    <p class="intro text-center">You have the option to search for any location within the map and can find other venues and their happy hour deals.</p>
+                                </div><!--//content-inner-->
+                                <div class="testimonial text-center">                                          
+                                    <div class="quote-container">
+                                        <i class="fa fa-quote-left"></i>
+                                        <blockquote class="quote">
+                                            "BoozeHound allows me and my girlfriends to find the best local bars and happy hour deals easily and effectively!""                                
+                                        </blockquote>
+                                        <div class="source">
+                                            <img class="profile" src="assets/images/profiles/profile-3.png" alt="" />
+                                            <p class="meta">
+                                                <span class="source-name">Kelly Ryan</span>
+                                                <span class="source-title">London, TX</span>
+                                            </p>
+                                        </div><!--//source-->
+                                    </div><!--//quote-container-->                    
+                                </div><!--//testimonial-->
+                            </div><!--//content-->
+                            <div class="device device-android col-md-4 col-sm-6 col-xs-12">     
+                                <div class="device-holder android-holder offset-top">                 
+                                    <div class="device-holder-inner">
+                                        <img class="img-responsive" src="assets/images/devices/screenshots/android-screen-4.jpg" alt="">
+                                    </div><!--//device-holder-inner-->  
+                                </div><!--//device-holder-->                  
+                            </div><!--//phone-holder-->                         
+                        </div><!--//row-->
+                    </div><!--//container-->
+                </div><!--//section-inner-->
+            </section><!--//benefit-3-->
+
+            <section id="benefit-4" class="benefit-4 section gradient-5 has-pattern">
+                <div class="section-inner">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="content col-md-7 col-sm-6 col-xs-12">
+                                <div class="content-inner">
+                                    <span class="pe-icon pe-7s-coffee pe-4x"></span>
+                                    <h2 class="title text-center">Find the Right Place</h2>
+                                    <p class="intro text-center">Filter venue results by drink type, hours open, location proximity, and price.
+                                    </p><br />
+                                     <p class="intro text-center">Once the choices have been narrowed down, the right venue is displayed and you can then call the venue, get directions to the place, save the venue by favoriting it, or sharing it on social media.</p>
+                                </div><!--//content-inner-->
+                            </div><!--//content-->
+                            <div class="device device-android col-md-4 col-sm-6 col-xs-12">     
+                                <div class="device-holder android-holder offset-top">                 
+                                    <div class="device-holder-inner">
+                                        <img class="img-responsive" src="assets/images/devices/screenshots/android-screen-2.jpg" alt="">
+                                    </div><!--//device-holder-inner-->  
+                                </div><!--//device-holder-->                  
+                            </div><!--//phone-holder-->                         
+                        </div><!--//row-->
+                    </div><!--//container-->
+                </div><!--//section-inner-->
+            </section><!--//benefit-4-->
+            
+                    
+            <!-- ******CTA Section****** -->
+                <div class="download text-center">
+                    <div class="container">
+                        <h3 class="title">Download BoozeHound now <br />and start drinking</h3>
+                        <ul class="list-inline download-list">
+                            <li><a class="btn btn-cta btn-cta-primary" href="#"><i class="fa fa-android"></i><span class="text">Download for Android</span></a></li>
+                        </ul>
+                        <figure class="qr-holder">
+                            <img src="assets/images/buttons/QR-code.png" alt="" />
+                            <figcaption class="caption">Scan the QR code to download</figcaption>
+                        </figure>
+                    </div><!--//container-->
+                </div><!--//download-->
+            </section><!--//cta-section-->        
+        </div><!--//sections-wrapper-->
+        
+            
+        <!-- ******FOOTER****** --> 
+        
+        <footer class="footer">
+            <div class="container text-center">
+                <nav class="links">
+                    <ul class="list-inline">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>                    
+                </nav>
+
+                <ul class="links legal-links list-inline">
+                    <li><a href="#">Privacy</a></li>
+                    <li class="last"><a href="#">Terms</a></li>
+                </ul><!--//legal-links-->
+                <small class="copyright">Copyright &copy; 2017 <a href="#">BoozeHound</a></small>
+                
+            </div><!--//container-->
+        </footer><!--//footer-->
+    </div><!--//canvas-wrapper-->
+        
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="assets/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>             
+    <script type="text/javascript" src="assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>                                                                  
+    <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+    <!-- Fullpage.js -->
+    <script type="text/javascript" src="assets/plugins/fullPage.js/jquery.fullPage.min.js"></script>
+    <script type="text/javascript" src="assets/js/fullpage-custom.js"></script> 
+    
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="assets/plugins/owl-carousel/owl.carousel.js"></script> 
+    <script type="text/javascript" src="assets/js/owl-custom.js"></script> 
+   
+    
+    <!-- Form Validation -->
+    <script type="text/javascript" src="assets/plugins/FitVids/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery.validate.min.js"></script> 
+    <script type="text/javascript" src="assets/js/form-validation-custom.js"></script>
+    
+    <!-- Form iOS fix -->
+    <script type="text/javascript" src="assets/plugins/isMobile/isMobile.min.js"></script>
+    <script type="text/javascript" src="assets/js/form-mobile-fix.js"></script>
+    
+    <!-- Vimeo video -->
+    <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+    <script type="text/javascript" src="assets/js/vimeo.js"></script>
+
+    
+</body>
+</html> 
+
