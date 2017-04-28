@@ -35,11 +35,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap map) {
         //run query
-
-        //addmarkers
-        AddMarker("-95.549686", "30.723162", map, "12th street bar");
-        //set camera
-        map.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(30.723526,-95.550777) , 14.0f) );
+        String type = "map load";
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(type);
+        //int numBars = 5;
+        //for(int i=0; i<numBars; i++) {
+            //addmarkers
+            AddMarker("-95.549686", "30.723162", map, "12th street bar");
+            //set camera
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(30.723526, -95.550777), 14.0f));
+        //}
     }
 
     public void AddMarker(String Long, String Lat, GoogleMap map, String Name){
