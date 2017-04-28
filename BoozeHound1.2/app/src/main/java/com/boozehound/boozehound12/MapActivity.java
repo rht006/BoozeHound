@@ -34,10 +34,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
     @Override
     public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions().position(new LatLng(30.723162, -95.549686)).title("12th Street Bar"));
+        //run query
+
+        //addmarkers
+        AddMarker("-95.549686", "30.723162", map, "12th street bar");
+        //set camera
         map.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(30.723526,-95.550777) , 14.0f) );
     }
 
+    public void AddMarker(String Long, String Lat, GoogleMap map, String Name){
+        Double Longitude = Double.parseDouble(Long);
+        Double Latitude = Double.parseDouble(Lat);
+        map.addMarker(new MarkerOptions().position(new LatLng(Latitude, Longitude)).title(Name));
+    }
 
 
     }
