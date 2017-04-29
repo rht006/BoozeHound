@@ -22,7 +22,7 @@ import java.util.*;
 
 
 public class MapActivity extends AppCompatActivity  implements OnMapReadyCallback, AsyncResponse {
-    private ArrayList<GetLocation> locationlist;
+    private ArrayList<GetLocation> locationlist = new ArrayList<GetLocation>();
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -106,6 +106,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
             String[] latitparts = parts[2].split("e");
             String latit = latitparts[2];
             Log.d("maps", loc);
+
             //add markers
             AddMarker(longit, latit, map, Integer.toString(i));
             //AddMarker("-95.549686", "30.723162", map, "12th street bar");
