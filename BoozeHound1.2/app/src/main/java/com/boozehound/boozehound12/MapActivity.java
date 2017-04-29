@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.amigold.fundapter.extractors.StringExtractor;
+import com.amigold.fundapter.BindDictionary;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,11 +20,14 @@ import com.kosalgeek.android.json.JsonConverter;
 import com.kosalgeek.genasync12.AsyncResponse;
 import com.kosalgeek.genasync12.PostResponseAsyncTask;
 
+import java.lang.Object;
 import java.util.*;
 
 
 public class MapActivity extends AppCompatActivity  implements OnMapReadyCallback, AsyncResponse {
     private ArrayList<GetLocation> locationlist = new ArrayList<GetLocation>();
+    String latit;
+    String longit;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -53,15 +58,15 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
 
         locationlist = new JsonConverter<GetLocation>().toArrayList(s, GetLocation.class);
 
-     /*   BindDictionary<GetLocation> dict = new BindDictionary<GetLocation>();
-        dict.addStringField(R.id.VenueID, new StringExtractor<Product>(){
+        BindDictionary<GetLocation> dict = new BindDictionary<GetLocation>();
+        /*dict.addStringField(R.id.VenueID, new StringExtractor<Product>(){
             @Override
             public String getStringValue(Product product, int position){
                 return "" + product.VenueID;
             }
        });
 
-        dict.addStringField(R.id.City, new StringExtractor<Product>() {
+        /*dict.addStringField(R.id.City, new StringExtractor<Product>() {
             @Override
             public String getStringValue(Product product, int position) {
                 return product.City;
@@ -78,7 +83,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
             public String getStringValue(Product product, int position) {
                 return "" + product.ZIP;
             }
-        });
+        });*/
         dict.addStringField(R.id.Longitude, new StringExtractor<GetLocation>() {
             @Override
             public String getStringValue(GetLocation location, int position) {
@@ -90,7 +95,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
             public String getStringValue(GetLocation location, int position) {
                 return location.Latitude;
             }
-        });*/
+        });
 
     }
     public void onMapReady(GoogleMap map) {
@@ -99,13 +104,8 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
         int numBars = locationlist.size();
         for(int i=0; i<numBars; i++) {
             //parse string
-            String loc = locationlist.get(i).toString();
-            String[] parts = loc.split("L");
-            String[] longitparts = parts[1].split("e");
-            String longit = longitparts[2];
-            String[] latitparts = parts[2].split("e");
-            String latit = latitparts[2];
-            Log.d("maps", loc);
+            longit = locationlist.get(i).toString();
+            latit = locationlist.get(i).toString();
 
             //add markers
             AddMarker(longit, latit, map, Integer.toString(i));
@@ -117,9 +117,9 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
 
 
     public void AddMarker(String Long, String Lat, GoogleMap map, String Name){
-        Double Longitude = Double.parseDouble(Long);
-        Double Latitude = Double.parseDouble(Lat);
-        map.addMarker(new MarkerOptions().position(new LatLng(Latitude, Longitude)).title(Name));
+        Double Longit = Double.parseDouble(Long);
+        Double Latit = Double.parseDouble(Lat);
+        map.addMarker(new MarkerOptions().position(new LatLng(Latit, Longit)).title(Name));
     }
 
 
