@@ -25,9 +25,11 @@ import java.util.*;
 
 
 public class MapActivity extends AppCompatActivity  implements OnMapReadyCallback, AsyncResponse {
-    private ArrayList<GetLocation> locationlist = new ArrayList<GetLocation>();
+    public ArrayList<GetLocation> locationlist = new ArrayList<GetLocation>();
     String latit;
     String longit;
+    String[] la;
+    String[] lo;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -57,7 +59,6 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
     public void processFinish(String s) {
 
         locationlist = new JsonConverter<GetLocation>().toArrayList(s, GetLocation.class);
-
         BindDictionary<GetLocation> dict = new BindDictionary<GetLocation>();
         /*dict.addStringField(R.id.VenueID, new StringExtractor<Product>(){
             @Override
@@ -87,12 +88,14 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
         dict.addStringField(R.id.Longitude, new StringExtractor<GetLocation>() {
             @Override
             public String getStringValue(GetLocation location, int position) {
+                longit = location.Longitude;
                 return location.Longitude;
             }
         });
         dict.addStringField(R.id.Latitude, new StringExtractor<GetLocation>() {
             @Override
             public String getStringValue(GetLocation location, int position) {
+                latit = location.Latitude;
                 return location.Latitude;
             }
         });
@@ -101,13 +104,17 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
     public void onMapReady(GoogleMap map) {
         //process query results
         String type = "map load";
+        //Log.d("maps", locationlist.get(0).toString());
         int numBars = locationlist.size();
+        Log.d("maps", Integer.toString(numBars));
         for(int i=0; i<numBars; i++) {
             //parse string
-            longit = locationlist.get(i).toString();
-            latit = locationlist.get(i).toString();
-
+            //longit = locationlist.get(i).toString();
+            //latit = locationlist.get(i).toString();
+            Log.d("maps", locationlist.get(i).toString());
             //add markers
+            Log.d("maps", longit);
+            Log.d("maps", latit);
             AddMarker(longit, latit, map, Integer.toString(i));
             //AddMarker("-95.549686", "30.723162", map, "12th street bar");
         }
