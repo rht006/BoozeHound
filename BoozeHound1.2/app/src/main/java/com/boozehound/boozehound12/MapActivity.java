@@ -28,12 +28,9 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
     public ArrayList<GetLocation> locationlist = new ArrayList<GetLocation>();
     String latit;
     String longit;
-    String[] la;
-    String[] lo;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
 
         //making AsyncTast reading from web url to get php file
         PostResponseAsyncTask taskRead = new PostResponseAsyncTask(MapActivity.this, this);
@@ -48,7 +45,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
             }
         }); */
 
-
+        setContentView(R.layout.activity_map);
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -109,8 +106,9 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
         Log.d("maps", Integer.toString(numBars));
         for(int i=0; i<numBars; i++) {
             //parse string
-            //longit = locationlist.get(i).toString();
-            //latit = locationlist.get(i).toString();
+            //locationlist = new JsonConverter<GetLocation>().toArrayList(s, GetLocation.class);
+            longit = locationlist.get(i).toString();
+            latit = locationlist.get(i).toString();
             Log.d("maps", locationlist.get(i).toString());
             //add markers
             Log.d("maps", longit);
